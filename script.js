@@ -335,7 +335,7 @@ projectCards.forEach(card => {
 // ============================================================
 //  PASTE KODE DISCORD PROFILE & STATUS DI SINI (Paling Bawah)
 // ============================================================
-  const discordID = '1127233313740955729'; 
+  const discordID = '1504756104406634567'; 
   const lanyardAPI = `https://api.lanyard.rest/v1/users/${discordID}`;
 
   fetch(lanyardAPI)
