@@ -264,22 +264,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // --- PROJECT CARDS CLICK ---
-const projectCards = document.querySelectorAll('.project-card');
-projectCards.forEach(card => {
-  card.addEventListener('click', () => {
-    // 1. Tetap mainkan efek suara klik bawaan portofolio kamu
-    playClick('ui');
-
-    // 2. Ambil URL dari atribut 'data-href'
-    const url = card.getAttribute('data-href');
+  // ============================================================
+  // FIX: PROJECT & SERVICES CARDS CLICK (Event Delegation)
+  // ============================================================
+  document.addEventListener('click', function(e) {
+    // Mencari elemen terdekat yang memiliki atribut 'data-href' saat diklik
+    // Ini memastikan klik pada teks (h3, p) di dalam kartu tetap terdeteksi
+    const clickableCard = e.target.closest('[data-href]');
     
-    // 3. Buka URL di tab baru jika atribut data-href tersedia
-    if (url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
+    if (clickableCard) {
+      // 1. Mainkan efek suara
+      if (typeof playClick === 'function') {
+        playClick('ui');
+      }
+
+      // 2. Ambil URL dan jenis target (_blank untuk tab baru)
+      const url = clickableCard.getAttribute('data-href');
+      const target = clickableCard.getAttribute('target');
+
+      // 3. Eksekusi link tujuan
+      if (url && url !== '#') {
+        if (target === '_blank') {
+          window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+          window.location.href = url;
+        }
+      }
     }
   });
-});
 
   // ============================================================
   //  Keyboard navigation
