@@ -1847,13 +1847,3 @@ body.loaded .grid-bg {
   right: 20px !important;     /* Jarak dari kanan didekatkan */
   z-index: 10000 !important;  /* Memastikan tombol tidak tertutup oleh teks atau media */
 }
-
-/* ============================================================
-   FIX: MEMASTIKAN KARTU BISA DIKLIK & TIDAK TERTUTUP LAYER
-============================================================ */
-.project-card, [data-href] {
-  cursor: pointer !important;
-  position: relative;
-  z-index: 50; /* Memaksa kartu berada di lapisan paling atas */
-  pointer-events: auto !important; /* Memaksa browser menerima event klik */
-}
