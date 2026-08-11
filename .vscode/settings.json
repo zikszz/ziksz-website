@@ -1,4 +1,4 @@
 {
     "livePreview.defaultPreviewPath": "/index.html",
-    "envWatcher.enabled": false
+    "envWatcher.enabled": true
 }
